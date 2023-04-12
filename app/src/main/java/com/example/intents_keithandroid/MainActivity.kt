@@ -54,6 +54,12 @@ class MainActivity : AppCompatActivity() {
             simToolKITIntent?.let { startActivity(it) }
         }
 
+        mbtnwebsite.setOnClickListener {
+            //Code to navigate from one activity to another
+            var gotoanotheractivity = Intent(this, WebsiteActivity::class.java)
+            startActivity(gotoanotheractivity)
+        }
+
 
     }
 }
