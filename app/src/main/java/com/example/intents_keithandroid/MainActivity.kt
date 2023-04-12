@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.widget.Button
 
 class MainActivity : AppCompatActivity() {
@@ -41,6 +42,16 @@ class MainActivity : AppCompatActivity() {
             emailIntent.putExtra(Intent.EXTRA_SUBJECT, "JOB APPLICATION")
             emailIntent.putExtra(Intent.EXTRA_TEXT, "Dear sir, I'm applying for a job at your institution")
             startActivity(Intent.createChooser(emailIntent, "Send Email"))
+        }
+
+        mbtncamera.setOnClickListener {
+            var takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            startActivityForResult(takePictureIntent, 1)
+        }
+
+        mbtnmpesa.setOnClickListener {
+            var simToolKITIntent = applicationContext.packageManager.getLaunchIntentForPackage("com.android.stk")
+            simToolKITIntent?.let { startActivity(it) }
         }
 
 
